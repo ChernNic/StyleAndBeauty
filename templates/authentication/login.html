@@ -1,0 +1,44 @@
+{% extends 'include/base.html' %}
+{% load static %}
+{% block title_name %} Авторизация {% endblock %}
+{% block content %}
+
+    <img src="{% static 'img/logo.png' %}" alt="Image" width="300" height="300" style="">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-3 login-container text-center">
+            <h2 class="mb-5" style="color: #FF4D6D; font-weight: lighter;">Авторизация</h2>
+            <form class="login-form" method="post">
+                {% csrf_token %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger" role="alert"><i
+                                class="fas fa-exclamation-triangle"></i> {{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+                <div class="form-group m-2 mt-3">
+                    <div class="form-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control col" name="username" placeholder="Имя пользователя"
+                                   required>
+                            <label for="floatingInputGroup1" style="color: #ADB5BD;">Имя пользователя</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="form-floating">
+                            <input type="password" class="form-control col" name="password" placeholder="Пароль"
+                                   required>
+                            <label for="floatingInputGroup1" style="color: #ADB5BD;">Пароль</label>
+                        </div>
+                        <p class="text-start" style="font-size: 12px; color: #727D88;">Нет аккаунта? <a
+                                href="{% url 'registration' %}" style="color: #FF4D6D;">Зарегистрируйся!</a></p>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-block m-5"
+                        style="font-weight: lighter; font-size: 22px; background-color: #C9184A; border-color: #C9184A; border-radius: 15px;">Подтвердить
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

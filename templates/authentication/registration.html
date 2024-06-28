@@ -1,0 +1,72 @@
+{% extends 'include/base.html' %}
+{% load static %}
+{% block title_name %} Регистрация {% endblock %}
+{% block content %}
+    <img src="{% static 'img/logo.png' %}" alt="Image" width="300" height="300" style="">
+    <div class="row justify-content-center">
+        <div class="col-md-3 login-container text-center">
+            <h2 class="mb-5" style="color: #FF4D6D; font-weight: lighter;">Регистрация</h2>
+            <form class="login-form" method="post">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}
+                                {{ field|title }}: {{ error }}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="form-group m-2 mt-3">
+                    <div class="form-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control col" name="first_name" placeholder="Имя"
+                                   pattern="[а-яА-Яa-zA-Z]{2,25}" required>
+                            <label for="floatingInputGroup1" style="color: #ADB5BD;">Имя</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control col" name="last_name" placeholder="Фамилия"
+                                   pattern="[а-яА-Яa-zA-Z]{2,25}" required>
+                            <label for="floatingInputGroup1" style="color: #ADB5BD;">Фамилия</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control col" name="sur_name" placeholder="Отчество"
+                                   pattern="[а-яА-Яa-zA-Z]{0,25}" required>
+                            <label for="floatingInputGroup1" style="color: #ADB5BD;">Отчество</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control col" name="contact_number" placeholder="Номер"
+                                   pattern="[0-9]{11}" inputmode="numeric" maxlength="11" required>
+                            <label for="floatingInputGroup1" style="color: #ADB5BD;">Номер</label>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control col" name="username" placeholder="Логин"
+                                   pattern="[a-zA-Z0-9]{2,25}" required>
+                            <label for="floatingInputGroup1" style="color: #ADB5BD;">Логин</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-floating">
+                            <input type="password" class="form-control col" name="password" placeholder="Пароль"
+                                   pattern="[a-zA-Z0-9:?!@#$%^&*_-+=/.,\|]{3,25}" required>
+                            <label for="floatingInputGroup1" style="color: #ADB5BD;">Пароль</label>
+                        </div>
+                    </div>
+                    <p class="text-start" style="font-size: 12px; color: #727D88;">Уже есть аккаунт? <a
+                            href="{% url 'login' %}" style="color: #FF4D6D;">Войти!</a></p>
+                </div>
+                <button type="submit" class="btn btn-success btn-block m-5 rounded-pill"
+                        style="font-weight: lighter; font-size: 22px; background-color: #C9184A; border-color: #C9184A; border-radius: 15px;">Зарегистрироваться
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'include/base.html' %}
+{% load static %}
+{% block title_name %} Личный кабинет {% endblock %}
+{% block content %}
+    <style>
+        .list-item {
+            display: flex;
+            justify-content: start;
+            font-size: 20px;
+        }
+
+        .field-name {
+            font-weight: normal;
+            color: #FF4D6D;
+            margin-right: 10px;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-light"
+         style="background-color: #ffffff; border-bottom: 3px solid #DADADA;">
+        <div class="container-fluid">
+            <!-- Логотип -->
+            <a class="navbar-brand" style="margin-right: 50px" href="">
+                <img src="{% static 'img/logo.png' %}" alt="Logo" width="100" height="100">
+            </a>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
+
+                </ul>
+                <!-- Кнопка выхода -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="link-danger" href="{% url 'logout' %}"
+                           style="color: #DF2020; font-weight: lighter; text-decoration-line: none; font-size: 25px">Выход</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="d-flex justify-content-center mt-5">
+    <a href="{% url 'admin:index' %}" class="btn btn-success m-1"
+       style="font-weight: lighter; font-size: 22px; background-color: #C9184A; border-color: #C9184A; border-radius: 10px;">
+        Админ панель
+    </a>
+</div>
+<div class="d-flex justify-content-center">
+    <a href="{% url 'download_statistics' %}" class="btn btn-success m-1"
+       style="font-weight: lighter; font-size: 22px; background-color: #C9184A; border-color: #C9184A; border-radius: 10px;">
+        Экспорт статистики
+    </a>
+</div>
+
+
+{% endblock %}

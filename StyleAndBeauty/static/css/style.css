@@ -1,0 +1,8 @@
+    .list-item {
+        display: flex;
+        justify-content: space-between;
+    }
+    .field-name {
+        font-weight: normal;
+        color: #FF4D6D;
+    }
